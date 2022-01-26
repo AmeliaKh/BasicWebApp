@@ -23,7 +23,13 @@ public class QueryProcessorTest {
     @Test
     public void knowsAboutImperial() throws Exception {
         assertThat(queryProcessor.process("Imperial"),
-                containsString("university"));
+            containsString("university"));
+    }
+
+    @Test
+    public void knowsAboutAmelia() throws Exception {
+        assertThat(queryProcessor.process("Amelia"),
+            containsString("sea"));
     }
 
     @Test
