@@ -80,7 +80,7 @@ public class QueryProcessor {
             return String.valueOf(sum);
         }
 
-        if (query.toLowerCase().contains("which of the following numbers are primes")) {
+        if (query.toLowerCase().contains("are primes")) {
             String str = query.toLowerCase();
             List<String> mutable = new ArrayList<>();
 
@@ -95,7 +95,7 @@ public class QueryProcessor {
             }
 
 
-            return String.valueOf(mutable);
+            return String.join(",", mutable);
         }
 
         return "";

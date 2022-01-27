@@ -55,9 +55,19 @@ public class QueryProcessorTest {
             containsString("262144,1"));
     }
     @Test
+    public void nosquareandcube() throws Exception {
+        assertThat(queryProcessor.process(" 1764, 2025, 384, 323\n"),
+            containsString(""));
+    }
+    @Test
     public void areprimes() throws Exception {
         assertThat(queryProcessor.process("which of the following numbers are primes: 59, 542"),
-            containsString("[59]"));
+            containsString("59"));
+    }
+    @Test
+    public void areprimes2() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers are primes: 2, 478, 824, 109"),
+            containsString("2,109"));
     }
 
     @Test
