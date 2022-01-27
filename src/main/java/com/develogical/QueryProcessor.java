@@ -79,6 +79,27 @@ public class QueryProcessor {
 
             return String.valueOf(sum);
         }
+        if (query.toLowerCase().contains("minus")) {
+            String str = query.toLowerCase();
+            int sum = 0;
+            int added = 0;
+            String[] lst = str.split("\\s+");
+            for (String i : lst) {
+
+                // accessing each element of array
+                i = i.replaceAll("[^0-9]", "");
+                if (i.length() > 0 && added == 0) {
+                    sum += Integer.parseInt(i);
+                    added = 1;
+                }
+                else if (i.length() > 0 ) {
+                    sum -= Integer.parseInt(i);
+                }
+            }
+
+
+            return String.valueOf(sum);
+        }
 
         if (query.toLowerCase().contains("are primes")) {
             String str = query.toLowerCase();

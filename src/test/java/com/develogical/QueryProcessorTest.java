@@ -44,6 +44,11 @@ public class QueryProcessorTest {
             containsString("27"));
     }
     @Test
+    public void minuser() throws Exception {
+        assertThat(queryProcessor.process("what is 0 minus 1"),
+            containsString("-1"));
+    }
+    @Test
     public void squareandcube() throws Exception {
         assertThat(queryProcessor.process("which of the following numbers is both a square and a cube: 772, 262144"),
             containsString("262144"));
@@ -53,6 +58,10 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("which of the following numbers is both a square and a "
                 + "cube: 1296, 504, 628, 1681, 262144, 1"),
             containsString("262144,1"));
+    }@Test
+    public void manysquareandcub2e() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers is both a square and a cube: 625, 989"),
+            containsString(""));
     }
     @Test
     public void nosquareandcube() throws Exception {
