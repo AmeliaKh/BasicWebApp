@@ -43,6 +43,11 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("what is 12 plus 15"),
             containsString("27"));
     }
+    @Test
+    public void squareandcube() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers is both a square and a cube: 772, 262144"),
+            containsString("262144"));
+    }
 
     @Test
     public void isNotCaseSensitive() throws Exception {

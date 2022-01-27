@@ -2,6 +2,8 @@ package com.develogical;
 
 import java.util.Arrays;
 import java.util.List;
+import java.lang.Math;
+
 
 public class QueryProcessor {
 
@@ -40,6 +42,26 @@ public class QueryProcessor {
 
             return String.valueOf(max_n);
         }
+
+
+        if (query.toLowerCase().contains("both a square and a cube")) {
+            String str = query.toLowerCase();
+            int correct = -1000;
+            String[] lst = str.split(",");
+
+            for (String i : lst) {
+
+                // accessing each element of array
+                int n = Integer.parseInt(i.replaceAll("[^0-9]", ""));
+
+                if (isPowerNumber(n, 2) && isCubeNumber(n)) {
+                    return String.valueOf(n);
+                }
+
+            }
+            return "-1000";
+        }
+
         if (query.toLowerCase().contains("plus")) {
             String str = query.toLowerCase();
             int sum = 0;
@@ -59,4 +81,21 @@ public class QueryProcessor {
 
         return "";
     }
+    public static boolean isPowerNumber(int n, double power) {
+        int a = (int) Math.pow(n, (1/power));
+        if (Math.pow(a,power) == n) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public static boolean isCubeNumber(int n) {
+        int a = (int) Math.cbrt(n);
+        if (Math.pow(a, 3) == n) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
