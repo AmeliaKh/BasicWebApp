@@ -29,7 +29,7 @@ public class QueryProcessorTest {
     @Test
     public void knowsAboutAmelia() throws Exception {
         assertThat(queryProcessor.process("what is your name"),
-            containsString("idontknowif"));
+            containsString("KK"));
     }
 
     @Test
