@@ -47,7 +47,7 @@ public class QueryProcessor {
 
         if (query.toLowerCase().contains("both a square and a cube")) {
             String str = query.toLowerCase();
-            int correct = -1000;
+            List<String> mutable = new ArrayList<>();
             String[] lst = str.split(",");
 
             for (String i : lst) {
@@ -56,11 +56,11 @@ public class QueryProcessor {
                 int n = Integer.parseInt(i.replaceAll("[^0-9]", ""));
 
                 if (isPowerNumber(n, 2) && isCubeNumber(n)) {
-                    return String.valueOf(n);
+                    mutable.add(String.valueOf(n));
                 }
 
             }
-            return "-1000";
+            return String.join(",", mutable);
         }
 
         if (query.toLowerCase().contains("plus")) {
