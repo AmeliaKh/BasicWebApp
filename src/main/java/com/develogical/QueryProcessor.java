@@ -1,5 +1,6 @@
 package com.develogical;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.lang.Math;
@@ -79,8 +80,27 @@ public class QueryProcessor {
             return String.valueOf(sum);
         }
 
+        if (query.toLowerCase().contains("which of the following numbers are primes")) {
+            String str = query.toLowerCase();
+            List<String> mutable = new ArrayList<>();
+
+            String[] lst = str.split("\\s+");
+            for (String i : lst) {
+
+                // accessing each element of array
+                i = i.replaceAll("[^0-9]", "");
+                if (i.length() > 0 && isPrime(Integer.parseInt(i))) {
+                    mutable.add(i);
+                }
+            }
+
+
+            return String.valueOf(mutable);
+        }
+
         return "";
     }
+
     public static boolean isPowerNumber(int n, double power) {
         int a = (int) Math.pow(n, (1/power));
         if (Math.pow(a,power) == n) {
@@ -96,6 +116,17 @@ public class QueryProcessor {
         } else {
             return false;
         }
+    }
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

@@ -48,6 +48,11 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("which of the following numbers is both a square and a cube: 772, 262144"),
             containsString("262144"));
     }
+    @Test
+    public void areprimes() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers are primes: 59, 542"),
+            containsString("[59]"));
+    }
 
     @Test
     public void isNotCaseSensitive() throws Exception {
