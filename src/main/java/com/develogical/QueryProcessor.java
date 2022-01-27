@@ -1,5 +1,8 @@
 package com.develogical;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class QueryProcessor {
 
     public String process(String query) {
@@ -20,6 +23,22 @@ public class QueryProcessor {
         }
         if (query.toLowerCase().contains("which of the following numbers is the largest: 525, 80, 84, 848")) {
             return "848";
+        }
+        if (query.toLowerCase().contains("which of the following numbers is the largest")) {
+            String str = query.toLowerCase();
+            int max_n = -10000;
+            List<String> lst = Arrays.asList(str.split(","));
+            for (String i : lst) {
+
+                // accessing each element of array
+                int nn = Integer.parseInt(str.replaceAll("[^0-9]", ""));
+                if (nn > max_n) {
+                    max_n = nn;
+                }
+            }
+
+
+            return String.valueOf(max_n);
         }
 
         return "";
