@@ -40,22 +40,22 @@ public class QueryProcessor {
 
             return String.valueOf(max_n);
         }
-//        if (query.toLowerCase().contains("plus")) {
-//            String str = query.toLowerCase();
-//            int sum = 0;
-//            List<String> lst = Arrays.asList(str.split(","));
-//            for (String i : lst) {
-//
-//                // accessing each element of array
-//                int nn = Integer.parseInt(str.replaceAll("[^0-9]", ""));
-//                if (nn > max_n) {
-//                    max_n = nn;
-//                }
-//            }
-//
-//
-//            return String.valueOf(max_n);
-//        }
+        if (query.toLowerCase().contains("plus")) {
+            String str = query.toLowerCase();
+            int sum = 0;
+            String[] lst = str.split("\\s+");
+            for (String i : lst) {
+
+                // accessing each element of array
+                i = i.replaceAll("[^0-9]", "");
+                if (i.length() > 0) {
+                    sum += Integer.parseInt(i);
+                }
+            }
+
+
+            return String.valueOf(sum);
+        }
 
         return "";
     }
