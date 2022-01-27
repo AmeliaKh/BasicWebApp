@@ -27,11 +27,11 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("which of the following numbers is the largest")) {
             String str = query.toLowerCase();
             int max_n = -10000;
-            List<String> lst = Arrays.asList(str.split(","));
+            String[] lst = str.split(",");
             for (String i : lst) {
 
                 // accessing each element of array
-                int nn = Integer.parseInt(str.replaceAll("[^0-9]", ""));
+                int nn = Integer.parseInt(i.replaceAll("[^0-9]", ""));
                 if (nn > max_n) {
                     max_n = nn;
                 }
@@ -40,6 +40,22 @@ public class QueryProcessor {
 
             return String.valueOf(max_n);
         }
+//        if (query.toLowerCase().contains("plus")) {
+//            String str = query.toLowerCase();
+//            int sum = 0;
+//            List<String> lst = Arrays.asList(str.split(","));
+//            for (String i : lst) {
+//
+//                // accessing each element of array
+//                int nn = Integer.parseInt(str.replaceAll("[^0-9]", ""));
+//                if (nn > max_n) {
+//                    max_n = nn;
+//                }
+//            }
+//
+//
+//            return String.valueOf(max_n);
+//        }
 
         return "";
     }
