@@ -63,6 +63,25 @@ public class QueryProcessor {
             return String.join(",", mutable);
         }
 
+        if (query.toLowerCase().contains("fibonacci sequence")) {
+            String str = query.toLowerCase();
+            int ans;
+            String[] lst = str.split("\\s+");
+
+            for (String i : lst) {
+
+                // accessing each element of array
+                String n = i.replaceAll("[^0-9]", "");
+
+                if (n.length() > 0) {
+                    int x = Integer.parseInt(n);
+                    return String.valueOf(fib(x));
+                }
+
+            }
+            return "";
+        }
+
         if (query.toLowerCase().contains("plus")) {
             String str = query.toLowerCase();
             int sum = 0;
@@ -148,6 +167,27 @@ public class QueryProcessor {
             }
         }
         return true;
+    }
+    static int fib(int n)
+    {
+        /* Declare an array to store Fibonacci numbers. */
+        int f[] = new int[n + 1];
+        int i;
+
+        /* 0th and 1st number of the series are 0 and 1*/
+        f[0] = 0;
+
+        if (n > 0) {
+            f[1] = 1;
+
+            for (i = 2; i <= n; i++) {
+                /* Add the previous 2 numbers in the series
+             and store it */
+                f[i] = f[i - 1] + f[i - 2];
+            }
+        }
+
+        return f[n];
     }
 
 }
